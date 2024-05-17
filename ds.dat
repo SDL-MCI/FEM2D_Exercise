@@ -1,0 +1,201 @@
+/batch
+/config,noeldb,1     ! force off writing results to database
+*get,_wallstrt,active,,time,wall
+! ANSYS input file written by Workbench version 2023 R2
+! File used for geometry attach: D:\20_fjNAS\Lehre\SynologyDrive\01_Lehrveranstaltungen\FiniteElements\03_ANSYS\02_starShapedDisc\star.stp
+/title,starShapedDisc--Steady-State Thermal (A5)
+! ****** Begin Custom Load Command Snippet ******
+/COM, ACT Extensions:
+/COM,     LSDYNA, 2023.2
+/COM,     5f463412-bd3e-484b-87e7-cbc0a665e474, wbex
+/COM,/COM,     ANSYSMotion, 2023.2
+/COM,     20180725-3f81-49eb-9f31-41364844c769, wbex
+/COM,
+! ****** End   Custom Load Command Snippet ******
+*DIM,_wb_ProjectScratch_dir,string,248
+_wb_ProjectScratch_dir(1) = 'D:\20_fjNAS\Lehre\SynologyDrive\01_Lehrveranstaltungen\NumMechVal\02_ANSYS\01_Temperature\_ProjectScratch\Scr1733\'
+*DIM,_wb_SolverFiles_dir,string,248
+_wb_SolverFiles_dir(1) = 'D:\20_fjNAS\Lehre\SynologyDrive\01_Lehrveranstaltungen\NumMechVal\02_ANSYS\01_Temperature\starShapedDisc_files\dp0\SYS-2\MECH\'
+*DIM,_wb_userfiles_dir,string,248
+_wb_userfiles_dir(1) = 'D:\20_fjNAS\Lehre\SynologyDrive\01_Lehrveranstaltungen\NumMechVal\02_ANSYS\01_Temperature\starShapedDisc_files\user_files\'
+/com,--- Data in consistent NMM units. See Solving Units in the help system for more information.
+/units,MPA
+/nopr
+/wb,file,start              !  signify a WB generated input file
+/prep7
+! Turn off shape checking because checks already performed inside WB mesher.
+! See help system for more information.
+SHPP,OFF,,NOWARN
+/nolist
+etcon,set             ! allow ANSYS to choose best KEYOP's for 180x elements, resets any applicable keyopt to MAPDL defaults
+/com,*********** Nodes for the whole assembly ***********
+nblock,3,,14
+(1i9,3e20.9e3)
+        1    -3.000000000E+01     1.000000000E+01     0.000000000E+00
+        2    -1.000000000E+01    -3.000000000E+01     0.000000000E+00
+        3    -2.000000000E+01    -1.000000000E+01     0.000000000E+00
+        4     1.000000000E+01    -3.000000000E+01     0.000000000E+00
+        5     3.000000000E+01     1.000000000E+01     0.000000000E+00
+        6     2.000000000E+01    -1.000000000E+01     0.000000000E+00
+        7     1.600000000E+01     2.400000000E+01     0.000000000E+00
+        8    -1.600000000E+01     2.400000000E+01     0.000000000E+00
+        9     1.734723476E-14     2.400000000E+01     0.000000000E+00
+       10     1.000000000E+01     0.000000000E+00     0.000000000E+00
+       11    -6.123233996E-16    -1.000000000E+01     0.000000000E+00
+       12    -1.000000000E+01     0.000000000E+00     0.000000000E+00
+       13    -6.123233996E-16     1.000000000E+01     0.000000000E+00
+-1
+/wb,elem,start            !  set before creation of elements
+/com,*********** Elements for Body 1 "star-FreeParts|1" ***********
+et,1,292
+keyo,1,3,3
+eblock,19,solid,,13
+(19i9)
+        1        1        1        1        0        0        0        0        4        0        1        2        4       11       11
+        1        1        1        1        0        0        0        0        4        0        2        2       11        3        3
+        1        1        1        1        0        0        0        0        4        0        3        1       12        8        8
+        1        1        1        1        0        0        0        0        4        0        4        1        3       12       12
+        1        1        1        1        0        0        0        0        4        0        5        8       13        9        9
+        1        1        1        1        0        0        0        0        4        0        6        7       13       10       10
+        1        1        1        1        0        0        0        0        4        0        7        3       11       12       12
+        1        1        1        1        0        0        0        0        4        0        8        8       12       13       13
+        1        1        1        1        0        0        0        0        4        0        9        6       10       11       11
+        1        1        1        1        0        0        0        0        4        0       10        4        6       11       11
+        1        1        1        1        0        0        0        0        4        0       11        7        9       13       13
+        1        1        1        1        0        0        0        0        4        0       12        5       10        6        6
+        1        1        1        1        0        0        0        0        4        0       13        5        7       10       10
+-1
+!Material Id = {00A1E4FC-4A8E-492E-B695-40D41A96C4EF}
+/wb,elem,end               !  done creating elements
+/com,*********** Send User Defined Coordinate System(s) ***********
+csys,0
+toffst,273.15,  ! Temperature offset from absolute zero
+/wb,mat,start              !  starting to send materials
+/com,*********** Send Materials ***********
+Temperature = 'TEMP' ! Temperature
+MP,DENS,1,7.85e-09,	! tonne mm^-3
+MP,ALPX,1,1.2e-05,	! C^-1
+MP,C,1,434000000,	! mm^2 s^-2 C^-1
+MP,KXX,1,60.5,	! tonne mm s^-3 C^-1
+MP,RSVX,1,0.00017,	! ohm mm
+MP,EX,1,200000,	! tonne s^-2 mm^-1
+MP,NUXY,1,0.3,
+MP,MURX,1,10000,
+MP,UVID,1,b2de975a-a7d9-4139-8ee8-21f9072f0f37
+MP,UMID,1,59002a79-71c2-428e-906b-55d7dbee100e
+
+/wb,mat,end                !  done sending materials
+/com,*********** Send Sheet Properties ***********
+r,1,1000.
+
+!************************* Model Summary ********************
+!star-FreeParts|1,	Structural Steel,	matid,	1
+!************************* End Model Summary ********************
+! get the diagonal of the bounding box. Needed later for other things
+*get,_xmin,node,,mnloc,x
+*get,_ymin,node,,mnloc,y
+*get,_zmin,node,,mnloc,z
+*get,_xmax,node,,mxloc,x
+*get,_ymax,node,,mxloc,y
+*get,_zmax,node,,mxloc,z
+_ASMDIAG=(_xmax-_xmin)*(_xmax-_xmin)+(_ymax-_ymin)*(_ymax-_ymin)+(_zmax-_zmin)*(_zmax-_zmin)
+_ASMDIAG=SQRT(_ASMDIAG)
+/wb,contact,start          !  starting to send contact
+/wb,contact,end            !  done creating contacts
+/golist
+/wb,load,start             !  starting to send loads
+/com,*********** Define Temperature Constraint ***********
+CMBLOCK,_CM34   ,NODE,        2
+(8i10)
+         5         7
+/com,*********** Define Temperature Constraint ***********
+CMBLOCK,_CM36   ,NODE,        2
+(8i10)
+         1         8
+/com,*********** Define Temperature Constraint ***********
+CMBLOCK,_CM38   ,NODE,        2
+(8i10)
+         2         4
+fcum,add                   ! add nodal forces up (needed in case have loads on the same edge,vertex)
+fcum                       ! reset default on fcum command since done sending WB F loads
+/com,***************** Define Uniform Initial temperature ***************
+tunif,22.
+/gst,on,on
+fini
+*get,_numnode,node,0,count
+*get,_numelem,elem,0,count
+*get, _MAXELEMNUM, elem, 0, NUM, MAX
+*get, _MAXNODENUM, node, 0, NUM, MAX
+*get, _MAXELEMTYPE, etyp, 0, NUM, MAX
+*get, _MAXREALCONST, rcon, 0, NUM, MAX
+/go
+/wb,load,end               !  done creating loads
+/com,--- Number of total nodes = %_numnode%
+/com,--- Number of contact elements = 0
+/com,--- Number of spring elements = 0
+/com,--- Number of bearing elements = 0
+/com,--- Number of solid elements = 13
+/com,--- Number of condensed parts = 0
+/com,--- Number of total elements = %_numelem%
+*get,_wallbsol,active,,time,wall
+/com,****************************************************************************
+/com,*************************    SOLUTION       ********************************
+/com,****************************************************************************
+/solu
+antype,0                   ! static analysis
+!eqsl,sparse               ! using sparse solver which is default so no eqsl command needed
+cntr,print,1               ! print out contact info and also make no initial contact an error
+rescontrol,,none                 ! Do not keep any restart files
+/com,****************************************************
+/com,******************* SOLVE FOR LS 1 OF 1 ****************
+d,_CM34,temp,100.
+d,_CM36,temp,70.
+d,_CM38,temp,40.
+/nopr
+/gopr
+autots,on
+nsub,1,10,1
+time,1.
+outres,erase
+outres,all,none
+outres,nsol,all
+outres,rsol,all
+outres,eangl,all
+outres,veng,all
+outres,fflux,all
+outres,cont,all
+cnvtol,heat,,.001,,1.e-003    ! Program Controlled. Set MINREF equivalent of 1e-6 Watts
+! *********** WB SOLVE COMMAND ***********
+! check interactive state
+*get,ANSINTER_,active,,int
+*if,ANSINTER_,ne,0,then
+/eof
+*endif
+solve
+/com *************** Write FE CONNECTORS ********* 
+CEWRITE,file,ce,,INTE
+/com,****************************************************
+/com,*************** FINISHED SOLVE FOR LS 1 *************
+*get,_wallasol,active,,time,wall
+/post1
+xmlo,ENCODING,ISO-8859-1
+xmlo,parm
+/xml,parm,xml
+fini
+/gopr
+*get,_walldone,active,,time,wall
+_preptime=(_wallbsol-_wallstrt)*3600
+_solvtime=(_wallasol-_wallbsol)*3600
+_posttime=(_walldone-_wallasol)*3600
+_totaltim=(_walldone-_wallstrt)*3600
+*get,_dlbratio,active,0,solu,dlbr
+*get,_combtime,active,0,solu,comb
+*get,_ssmode,active,0,solu,ssmm
+*get,_ndofs,active,0,solu,ndof
+/com,--- Total number of nodes = %_numnode%
+/com,--- Total number of elements = %_numelem%
+/com,--- Element load balance ratio = %_dlbratio%
+/com,--- Time to combine distributed files = %_combtime%
+/com,--- Sparse memory mode = %_ssmode%
+/com,--- Number of DOF = %_ndofs%
+/wb,file,end               ! done with WB generated input

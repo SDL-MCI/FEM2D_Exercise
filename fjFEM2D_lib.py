@@ -1,5 +1,3 @@
-import tkinter as tk
-from tkinter import filedialog
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.tri as mtri
@@ -9,7 +7,7 @@ import re
 from typing import Tuple
 
 
-def read_ANSYS(file_path: str | None) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def read_ANSYS(file_path: str | None = None) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Read an input file provided by ANSYS.
 
     Extracts the nodal coordinates, element connectivity, boundary conditions, material properties, and external forces from the selected file:
@@ -32,12 +30,14 @@ def read_ANSYS(file_path: str | None) -> Tuple[np.ndarray, np.ndarray, np.ndarra
     matProp : np.ndarray
         Array of material properties used in the analysis.
     elMat : np.ndarray
-        ??
+        Array of material indices for each element.
     fex : np.ndarray
         Array of external forces.
     """
 
     if file_path is None:
+        import tkinter as tk
+        from tkinter import filedialog
         root = tk.Tk()
         root.wm_attributes('-topmost', 1)
         root.withdraw()
